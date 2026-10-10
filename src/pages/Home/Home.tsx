@@ -3,6 +3,7 @@ import DevFlowAbout from "@/components/home/DevFlowAbout"
 import FeaturesShowcase from "@/components/home/FeatureShowcase"
 import FeaturesSection from "@/components/home/FeaturesSection"
 import { Hero } from "@/components/home/Hero"
+import IntegrationsSection from "@/components/home/IntegrationsSection"
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <FeaturesSection/>
       <FeaturesShowcase/>
       <DevFlowAbout/>
+      <IntegrationsSection/>
     </main>
   )
 }
