@@ -1,7 +1,11 @@
 import { Crown, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export function DashboardTitleBar() {
+interface DashboardTitleBarProps {
+  onAddClick?: () => void
+}
+
+export function DashboardTitleBar({ onAddClick }: DashboardTitleBarProps) {
   const teamAvatars = [
     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
@@ -57,10 +61,12 @@ export function DashboardTitleBar() {
           </div>
 
           <Button
-            className="h-9 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 px-4 text-xs font-semibold shadow-xs active:scale-95 transition-all"
+            type="button"
+            onClick={onAddClick}
+            className="group relative overflow-hidden h-9 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 px-4 text-xs font-semibold shadow-xs hover:shadow-md active:scale-95 transition-all duration-200 hover:ring-2 hover:ring-[#EF4671]/40"
           >
-            <Plus className="mr-1 size-3.5" />
-            Add
+            <Plus className="mr-1.5 size-3.5 transition-transform duration-300 group-hover:rotate-90 group-hover:scale-110" />
+            <span>Add</span>
           </Button>
         </div>
       </div>

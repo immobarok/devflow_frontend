@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Search, Plus, CheckCircle2, Clock, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { CreateTaskModal, type TaskPayload } from "@/components/dashboard"
 
 interface Task {
   id: string
@@ -63,10 +64,36 @@ const mockTasks: Task[] = [
 export default function TaskOverviewPage() {
   const [filter, setFilter] = useState<string>("All")
   const [search, setSearch] = useState("")
+  const [tasksList, setTasksList] = useState<Task[]>(mockTasks)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const filteredTasks = mockTasks.filter((task) => {
+  const handleCreateTask = (payload: TaskPayload) => {
+    let normalizedPriority: Task["priority"] = "Medium"
+    if (payload.priority.label.includes("Urgent")) normalizedPriority = "Urgent"
+    else if (payload.priority.label.includes("High")) normalizedPriority = "High"
+    else if (payload.priority.label.includes("Low")) normalizedPriority = "Low"
+
+    const newTask: Task = {
+      id: `DEV-${100 + tasksList.length + 1}`,
+      title: payload.title,
+      category: "Feature Sprint",
+      status: (payload.status as Task["status"]) || "To Do",
+      priority: normalizedPriority,
+      dueDate: payload.dueDate,
+      assignee: {
+        name: "Brenda",
+        avatar: payload.assignees[0] || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
+      },
+    }
+
+    setTasksList([newTask, ...tasksList])
+  }
+
+  const filteredTasks = tasksList.filter((task) => {
     const matchesFilter = filter === "All" || task.status === filter
-    const matchesSearch = task.title.toLowerCase().includes(search.toLowerCase()) || task.id.toLowerCase().includes(search.toLowerCase())
+    const matchesSearch =
+      task.title.toLowerCase().includes(search.toLowerCase()) ||
+      task.id.toLowerCase().includes(search.toLowerCase())
     return matchesFilter && matchesSearch
   })
 
@@ -86,13 +113,29 @@ export default function TaskOverviewPage() {
   const getStatusBadge = (status: Task["status"]) => {
     switch (status) {
       case "To Do":
-        return <span className="flex items-center gap-1.5 text-xs font-semibold text-slate-500"><Clock className="size-3.5" /> To Do</span>
+        return (
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+            <Clock className="size-3.5" /> To Do
+          </span>
+        )
       case "In Progress":
-        return <span className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400"><Clock className="size-3.5" /> In Progress</span>
+        return (
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400">
+            <Clock className="size-3.5" /> In Progress
+          </span>
+        )
       case "Under Review":
-        return <span className="flex items-center gap-1.5 text-xs font-semibold text-purple-600 dark:text-purple-400"><AlertCircle className="size-3.5" /> Under Review</span>
+        return (
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-purple-600 dark:text-purple-400">
+            <AlertCircle className="size-3.5" /> Under Review
+          </span>
+        )
       case "Completed":
-        return <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><CheckCircle2 className="size-3.5" /> Completed</span>
+        return (
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            <CheckCircle2 className="size-3.5" /> Completed
+          </span>
+        )
     }
   }
 
@@ -109,9 +152,13 @@ export default function TaskOverviewPage() {
           </p>
         </div>
 
-        <Button className="h-9 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 px-4 text-xs font-bold shadow-xs active:scale-95 transition-all w-fit">
-          <Plus className="mr-1.5 size-3.5" />
-          Create Task
+        <Button
+          type="button"
+          onClick={() => setIsModalOpen(true)}
+          className="group relative overflow-hidden h-9 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 px-4 text-xs font-semibold shadow-xs hover:shadow-md active:scale-95 transition-all duration-200 hover:ring-2 hover:ring-[#EF4671]/40 w-fit"
+        >
+          <Plus className="mr-1.5 size-3.5 transition-transform duration-300 group-hover:rotate-90 group-hover:scale-110" />
+          <span>Create Task</span>
         </Button>
       </div>
 
@@ -202,6 +249,14 @@ export default function TaskOverviewPage() {
           </table>
         </div>
       </div>
+
+      {/* Animated Create Task Modal */}
+      <CreateTaskModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onCreateTask={handleCreateTask}
+        defaultStatus="To Do"
+      />
     </div>
   )
 }
