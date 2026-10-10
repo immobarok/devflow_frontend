@@ -1,9 +1,10 @@
 import { Link } from "react-router"
 import { Button } from "@/components/ui/button"
+import TrustedBySection from "./TrustedBySection"
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden bg-background pt-16 md:pt-24 lg:pt-32 pb-16">
+    <div className="relative overflow-hidden bg-background py-8">
       {/* Background patterns - Isometric Geometric Lines */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <svg
@@ -133,29 +134,7 @@ export function Hero() {
 
           </div>
         </div>
-
-        {/* Logos Section */}
-        <div className="mt-24 lg:mt-32 pt-10 text-center animate-in fade-in duration-1000 delay-700">
-          <p className="text-[15px] font-semibold text-foreground mb-10">Over 32k+ software businesses growing with Milestone</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24 grayscale-[50%] hover:grayscale-0 transition-all duration-300 opacity-90">
-            <div className="flex items-center gap-2 text-2xl font-black tracking-tighter text-red-600">
-              ORACLE
-            </div>
-            <div className="flex items-center gap-2 text-xl font-bold text-cyan-500">
-              <div className="w-6 h-6 border-[3px] border-cyan-500 rounded-sm rotate-45"></div> MORPHEUS
-            </div>
-            <div className="flex items-center gap-2 text-2xl font-black text-blue-800 tracking-tighter">
-              SAMSUNG
-            </div>
-            <div className="flex items-center gap-1 text-2xl font-bold">
-              <span className="text-yellow-400 font-black">/</span><span className="text-red-500 font-black">.</span><span className="tracking-tight">monday</span><span className="font-semibold text-lg">.com</span>
-            </div>
-            <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 tracking-tighter">
-              segment
-            </div>
-          </div>
-        </div>
-
+        <TrustedBySection />
       </div>
     </div>
   )
