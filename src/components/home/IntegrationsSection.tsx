@@ -53,20 +53,14 @@ const IntegrationsSection = () => {
 
         <div className="relative mx-auto h-[400px] w-full max-w-[1000px] sm:h-[500px]">
           <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-            {/* Outer Ring */}
             <div className="absolute size-[220px] rounded-full bg-[#EF4671]/5 sm:size-[320px]" />
-            {/* Middle Ring */}
             <div className="absolute size-[140px] rounded-full bg-[#EF4671]/10 sm:size-[200px]" />
-            {/* Inner Ring Glow */}
             <div className="absolute size-[80px] rounded-full bg-[#EF4671]/20 sm:size-[120px]" />
-            
-            {/* Center Lock Box */}
             <div className="relative flex size-16 items-center justify-center rounded-2xl bg-gradient-to-b from-[#EF4671] to-[#D8325C] shadow-[0_8px_30px_rgba(239,70,113,0.4)] sm:size-20">
               <Lock className="size-7 text-white sm:size-9" />
             </div>
           </div>
 
-          {/* Integration Pills - Desktop Absolute Positioning using Exact Math */}
           <div className="hidden h-full w-full lg:block">
             {integrations.map((integration, index) => (
               <div
@@ -88,7 +82,6 @@ const IntegrationsSection = () => {
             ))}
           </div>
 
-          {/* Integration Pills - Mobile/Tablet Flex Wrap */}
           <div className="flex h-full w-full flex-wrap content-center justify-center gap-4 lg:hidden pt-32">
             {integrations.map((integration, index) => (
               <div
