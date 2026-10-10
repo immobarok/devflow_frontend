@@ -44,7 +44,7 @@ export function Footer() {
 
   return (
     <footer className="bg-slate-50 pt-20 text-slate-600 sm:pt-24 lg:pt-32 border-t border-slate-100">
-      <div className="container mx-auto px-5 pb-12 sm:px-8 lg:px-12">
+      <div className="container mx-auto px-4 lg:px-0 pb-12">
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-8">
           
           {/* Brand & Description */}
