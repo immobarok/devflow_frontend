@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router"
 import { Logo } from "@/components/logo/logo"
-import { CheckCircle2, BarChart3, Users, Zap } from "lucide-react"
+import { BarChart3, Users, Zap } from "lucide-react"
 
 export default function AuthLayout() {
   return (
