@@ -18,28 +18,25 @@ export const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     children: [
       { index: true, element: <HomePage /> },
-
-      {
-        element: <AuthLayout />,
-        children: [
-          { path: "login", element: <LoginPage /> },
-          { path: "register", element: <RegisterPage /> },
-        ],
-      },
-
-      {
-        element: <ProtectedRoute />,
-        children: [
-          {
-            element: <DashboardLayout />,
-            children: [
-              { path: "dashboard", element: <DashboardPage /> },
-            ],
-          },
-        ],
-      },
-
       { path: "*", element: <NotFoundPage /> },
+    ],
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      { path: "/login", element: <LoginPage /> },
+      { path: "/register", element: <RegisterPage /> },
+    ],
+  },
+  {
+    element: <ProtectedRoute />,
+    children: [
+      {
+        element: <DashboardLayout />,
+        children: [
+          { path: "/dashboard", element: <DashboardPage /> },
+        ],
+      },
     ],
   },
 ])
