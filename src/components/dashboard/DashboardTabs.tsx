@@ -22,7 +22,7 @@ export function DashboardTabs({ activeTab, onTabChange }: DashboardTabsProps) {
             key={tab.name}
             type="button"
             onClick={() => onTabChange(tab.name)}
-            className={`flex h-10 items-center gap-2 rounded-full px-4 text-xs font-bold transition-all ${
+            className={`flex h-10 items-center gap-2 rounded-full px-4 text-xs font-semibold transition-all ${
               isActive
                 ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950 shadow-xs"
                 : "border border-white/80 bg-white/60 dark:border-white/10 dark:bg-slate-900/60 backdrop-blur-md text-slate-700 dark:text-slate-200 hover:border-white dark:hover:border-white/20 hover:bg-white/80 dark:hover:bg-slate-800/80 shadow-2xs"
@@ -30,7 +30,7 @@ export function DashboardTabs({ activeTab, onTabChange }: DashboardTabsProps) {
           >
             <span>{tab.name}</span>
             <span
-              className={`flex size-5 items-center justify-center rounded-full text-[11px] font-extrabold ${
+              className={`flex size-5 items-center justify-center rounded-full text-[11px] font-semibold ${
                 isActive
                   ? "bg-white text-slate-950 dark:bg-slate-950 dark:text-white"
                   : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"

@@ -17,7 +17,7 @@ export function DashboardHeader() {
         <SidebarTrigger className="lg:hidden text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" />
         <Link to="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-90">
           <Logo className="h-8 w-8" />
-          <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white">DevFlow</span>
+          <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">DevFlow</span>
         </Link>
       </div>
 
@@ -33,7 +33,7 @@ export function DashboardHeader() {
             className="h-10 w-full rounded-full border border-slate-200 bg-slate-50/70 pl-10 pr-20 text-sm text-slate-900 placeholder:text-slate-400 dark:border-white/10 dark:bg-slate-900/80 dark:text-white dark:placeholder:text-slate-500 transition-all focus:border-[#EF4671] focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:ring-4 focus:ring-[#EF4671]/10"
           />
           <div className="absolute right-2.5 flex items-center gap-1.5">
-            <kbd className="hidden rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-semibold text-slate-400 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400 sm:inline-block shadow-2xs">
+            <kbd className="hidden rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] font-medium text-slate-400 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400 sm:inline-block shadow-2xs">
               ⌘ S
             </kbd>
             <button
@@ -93,7 +93,7 @@ export function DashboardHeader() {
             alt="Brenda"
             className="size-9 rounded-full object-cover ring-2 ring-slate-100 dark:ring-slate-800"
           />
-          <span className="hidden text-sm font-semibold text-slate-800 dark:text-slate-100 sm:inline-block">
+          <span className="hidden text-sm font-medium text-slate-700 dark:text-slate-200 sm:inline-block">
             Brenda
           </span>
         </div>

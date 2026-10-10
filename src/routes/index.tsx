@@ -8,6 +8,11 @@ import ErrorBoundary from "./ErrorBoundary"
 import LoginPage from "@/pages/Login"
 import RegisterPage from "@/pages/Register"
 import DashboardPage from "@/pages/Dashboard"
+import TaskOverviewPage from "@/pages/dashboard/TaskOverviewPage"
+import CalendarViewPage from "@/pages/dashboard/CalendarViewPage"
+import TeamMembersPage from "@/pages/dashboard/TeamMembersPage"
+import ReportSummaryPage from "@/pages/dashboard/ReportSummaryPage"
+import SettingsPage from "@/pages/dashboard/SettingsPage"
 import NotFoundPage from "@/pages/NotFound"
 import HomePage from "@/pages/Home/Home"
 import PricingPage from "@/pages/Pricing/PricingPage"
@@ -37,6 +42,11 @@ export const router = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
           { path: "/dashboard", element: <DashboardPage /> },
+          { path: "/dashboard/tasks", element: <TaskOverviewPage /> },
+          { path: "/dashboard/calendar", element: <CalendarViewPage /> },
+          { path: "/dashboard/team", element: <TeamMembersPage /> },
+          { path: "/dashboard/reports", element: <ReportSummaryPage /> },
+          { path: "/dashboard/settings", element: <SettingsPage /> },
         ],
       },
     ],

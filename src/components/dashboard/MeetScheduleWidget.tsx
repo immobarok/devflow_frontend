@@ -6,7 +6,7 @@ export function MeetScheduleWidget() {
     <div className="flex flex-col justify-between rounded-3xl border border-white/80 bg-white/70 dark:border-white/10 dark:bg-[#141a29]/70 backdrop-blur-xl p-4.5 shadow-sm shadow-slate-900/[0.03] dark:shadow-none transition-all hover:bg-white/85 dark:hover:bg-[#192133]/80 hover:border-white dark:hover:border-white/20 hover:shadow-md">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-base font-bold text-slate-900 dark:text-white">
+        <div className="flex items-center gap-2 text-sm sm:text-base font-semibold text-slate-900 dark:text-white">
           <Video className="size-4.5 text-slate-700 dark:text-slate-300" />
           <span>Meet Schedule</span>
         </div>
@@ -30,7 +30,7 @@ export function MeetScheduleWidget() {
 
         {/* Top Badges */}
         <div className="absolute top-2.5 left-2.5">
-          <span className="rounded-full bg-black/60 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-bold text-white tracking-wider">
+          <span className="rounded-full bg-black/60 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-semibold text-white tracking-wider">
             Preview
           </span>
         </div>
@@ -79,14 +79,14 @@ export function MeetScheduleWidget() {
       {/* Footer Info & Join Button */}
       <div className="mt-4 flex items-center justify-between pt-2">
         <div>
-          <h4 className="text-sm font-bold text-slate-900 dark:text-white">Daily Scrum 👏</h4>
-          <p className="mt-0.5 text-xs text-slate-400 dark:text-slate-400 font-medium">
+          <h4 className="text-sm font-semibold text-slate-900 dark:text-white">Daily Scrum 👏</h4>
+          <p className="mt-0.5 text-xs text-slate-400 dark:text-slate-400 font-normal">
             Sep 12 &nbsp; 10:00 - 10:15
           </p>
         </div>
 
         <Button
-          className="h-9 rounded-full bg-slate-100 dark:bg-slate-800 px-4 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-[#EF4671] hover:text-white dark:hover:bg-[#EF4671] dark:hover:text-white transition-all shadow-2xs"
+          className="h-9 rounded-full bg-slate-100 dark:bg-slate-800 px-4 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-[#EF4671] hover:text-white dark:hover:bg-[#EF4671] dark:hover:text-white transition-all shadow-2xs"
         >
           <span>Join Meet</span>
           <Video className="ml-1.5 size-3.5" />

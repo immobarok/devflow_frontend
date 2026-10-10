@@ -25,13 +25,13 @@ export function TimerWidget() {
 
   return (
     <div className="flex flex-col justify-between rounded-3xl border border-white/80 bg-gradient-to-br from-[#dfd1fb]/80 via-[#edd8fa]/70 to-[#fedde7]/80 dark:border-white/10 dark:from-purple-950/70 dark:via-purple-900/40 dark:to-pink-950/60 backdrop-blur-xl p-4 shadow-sm shadow-slate-900/[0.03] dark:shadow-none flex-1 transition-all hover:border-white dark:hover:border-white/20 hover:shadow-md">
-      <div className="flex items-center gap-2 text-sm font-bold text-slate-800 dark:text-slate-200">
+      <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
         <TimerIcon className="size-4 text-purple-600 dark:text-purple-400" />
         <span>Timer</span>
       </div>
 
       <div className="mt-4 flex items-center justify-between">
-        <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono">
+        <span className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-mono">
           {formatTimer(timerSeconds)}
         </span>
 
@@ -51,16 +51,16 @@ export function TimerWidget() {
 export function NotesWidget() {
   return (
     <div className="flex flex-col justify-between rounded-3xl border border-white/80 bg-gradient-to-br from-[#ffe4eb]/85 to-[#fed1dc]/75 dark:border-white/10 dark:from-pink-950/60 dark:to-rose-950/40 backdrop-blur-xl p-4 shadow-sm shadow-slate-900/[0.03] dark:shadow-none flex-1 transition-all hover:border-white dark:hover:border-white/20 hover:shadow-md">
-      <div className="flex items-center gap-2 text-sm font-bold text-slate-800 dark:text-slate-200">
+      <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
         <StickyNote className="size-4 text-[#EF4671]" />
         <span>Notes</span>
       </div>
 
       <div className="mt-2">
-        <p className="text-xs font-bold leading-relaxed text-slate-800 dark:text-slate-100">
+        <p className="text-xs font-semibold leading-relaxed text-slate-800 dark:text-slate-100">
           Revamp Sidebar &amp; Update before Sep 14 🔥
         </p>
-        <p className="mt-1 text-[11px] font-semibold text-slate-500 dark:text-slate-400">Today</p>
+        <p className="mt-1 text-[11px] font-normal text-slate-500 dark:text-slate-400">Today</p>
       </div>
     </div>
   )
