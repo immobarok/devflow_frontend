@@ -43,7 +43,7 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 md:px-8">
+      <div className="container relative z-10 mx-auto px-4 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
           {/* Left Content */}

@@ -1,4 +1,5 @@
 import DashboardSection from "@/components/home/DashboardSection"
+import FeaturesSection from "@/components/home/FeaturesSection"
 import { Hero } from "@/components/home/Hero"
 
 export default function HomePage() {
@@ -6,6 +7,7 @@ export default function HomePage() {
     <main>
       <Hero />
       <DashboardSection/>
+      <FeaturesSection/>
     </main>
   )
 }
