@@ -26,6 +26,12 @@ export function Navbar() {
               Pricing
             </Link>
             <Link
+              to="/dashboard"
+              className="inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-accent hover:text-accent-foreground"
+            >
+              Dashboard
+            </Link>
+            <Link
               to="/blog"
               className="inline-flex h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-accent hover:text-accent-foreground"
             >
