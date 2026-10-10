@@ -6,9 +6,9 @@ export function Footer() {
     {
       title: "Product",
       links: [
-        { label: "Features", href: "#" },
-        { label: "Integrations", href: "#" },
-        { label: "Pricing", href: "#" },
+        { label: "Features", href: "#features" },
+        { label: "Integrations", href: "#integrations" },
+        { label: "Pricing", href: "/pricing" },
         { label: "Changelog", href: "#" },
         { label: "Docs", href: "#" },
       ],
@@ -82,12 +82,21 @@ export function Footer() {
                 <ul className="space-y-4">
                   {column.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="text-sm font-medium text-slate-500 transition-colors hover:text-[#EF4671]"
-                      >
-                        {link.label}
-                      </a>
+                      {link.href.startsWith("/") ? (
+                        <Link
+                          to={link.href}
+                          className="text-sm font-medium text-slate-500 transition-colors hover:text-[#EF4671]"
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="text-sm font-medium text-slate-500 transition-colors hover:text-[#EF4671]"
+                        >
+                          {link.label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

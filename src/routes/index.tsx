@@ -10,6 +10,7 @@ import RegisterPage from "@/pages/Register"
 import DashboardPage from "@/pages/Dashboard"
 import NotFoundPage from "@/pages/NotFound"
 import HomePage from "@/pages/Home/Home"
+import PricingPage from "@/pages/Pricing/PricingPage"
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: "pricing", element: <PricingPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
