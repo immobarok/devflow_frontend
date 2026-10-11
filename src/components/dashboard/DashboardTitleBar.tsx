@@ -1,11 +1,14 @@
 import { Crown, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useWorkspaces } from "@/lib/workspaceStore"
 
 interface DashboardTitleBarProps {
   onAddClick?: () => void
 }
 
 export function DashboardTitleBar({ onAddClick }: DashboardTitleBarProps) {
+  const { activeWorkspace } = useWorkspaces()
+
   const teamAvatars = [
     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
@@ -18,11 +21,17 @@ export function DashboardTitleBar({ onAddClick }: DashboardTitleBarProps) {
       {/* 1. Breadcrumb & Metadata Row */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-1.5 text-xs font-normal text-slate-400">
-          <span className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer transition-colors">Workspace</span>
+          <span className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer transition-colors font-medium text-slate-600 dark:text-slate-300">
+            {activeWorkspace.name}
+          </span>
           <span className="text-slate-300 dark:text-slate-600">&gt;</span>
-          <span className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer transition-colors">Ongoing Projects</span>
+          <span className="hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer transition-colors">
+            Ongoing Projects
+          </span>
           <span className="text-slate-300 dark:text-slate-600">&gt;</span>
-          <span className="font-semibold text-slate-800 dark:text-slate-100">DevFlow - SaaS Dashboard</span>
+          <span className="font-semibold text-slate-800 dark:text-slate-100">
+            DevFlow - SaaS Dashboard
+          </span>
         </div>
 
         <div className="flex items-center gap-2 text-xs font-normal text-slate-500 dark:text-slate-400">

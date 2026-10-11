@@ -40,10 +40,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useWorkspaces } from "@/lib/workspaceStore"
+import { CreateWorkspaceModal } from "./CreateWorkspaceModal"
 
 export function AppSidebar() {
   const location = useLocation()
   const [isProjectsOpen, setIsProjectsOpen] = useState(true)
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+  const { workspaces, activeWorkspace, switchWorkspace } = useWorkspaces()
 
   const menuItems = [
     { title: "Dashboard", icon: Home, badge: null, path: "/dashboard" },
@@ -64,50 +68,82 @@ export function AppSidebar() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <div className="flex w-full cursor-pointer items-center justify-between rounded-2xl border border-white/80 bg-white/75 dark:border-white/10 dark:bg-slate-900/70 backdrop-blur-xl p-2.5 shadow-2xs transition-all hover:bg-white/95 dark:hover:bg-slate-900/90 hover:border-white dark:hover:border-white/20 hover:shadow-xs active:scale-[0.99]">
-              <div className="flex items-center gap-2.5">
-                <Avatar className="size-9 shrink-0 ring-2 ring-white/90 dark:ring-slate-800 shadow-2xs">
-                  <AvatarImage
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80"
-                    alt="Brenda Vance"
-                  />
-                  <AvatarFallback className="bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-xs font-semibold">
-                    BV
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col text-left">
-                  <span className="text-xs font-semibold text-slate-900 dark:text-white leading-tight">
-                    Milesto Team
+              <div className="flex items-center gap-2.5 overflow-hidden">
+                {activeWorkspace.avatar ? (
+                  <Avatar className="size-9 shrink-0 ring-2 ring-white/90 dark:ring-slate-800 shadow-2xs">
+                    <AvatarImage
+                      src={activeWorkspace.avatar}
+                      alt={activeWorkspace.name}
+                    />
+                    <AvatarFallback className={`${activeWorkspace.color} text-white text-xs font-semibold`}>
+                      {activeWorkspace.initials}
+                    </AvatarFallback>
+                  </Avatar>
+                ) : (
+                  <div
+                    className={`size-9 shrink-0 rounded-2xl ${activeWorkspace.color} flex items-center justify-center text-white text-xs font-bold ring-2 ring-white/90 dark:ring-slate-800 shadow-2xs`}
+                  >
+                    {activeWorkspace.initials}
+                  </div>
+                )}
+                <div className="flex flex-col text-left truncate">
+                  <span className="text-xs font-semibold text-slate-900 dark:text-white leading-tight truncate">
+                    {activeWorkspace.name}
                   </span>
                   <span className="flex items-center gap-1 text-[11px] font-normal text-slate-400">
                     <Lock className="size-2.5" />
-                    Private
+                    {activeWorkspace.type}
                   </span>
                 </div>
               </div>
-              <ChevronDown className="size-4 text-slate-400 mr-1" />
+              <ChevronDown className="size-4 text-slate-400 mr-1 shrink-0" />
             </div>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent className="w-56 rounded-2xl p-1.5 border border-white/80 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-xl">
+          <DropdownMenuContent className="w-56 rounded-2xl p-1.5 border border-white/80 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-xl z-50">
             <DropdownMenuLabel className="text-[10px] font-semibold text-slate-400 px-2 py-1 uppercase tracking-wider">
-              Workspaces
+              Workspaces ({workspaces.length})
             </DropdownMenuLabel>
-            <DropdownMenuItem className="flex items-center gap-2.5 rounded-xl px-2 py-2 text-xs font-medium cursor-pointer bg-slate-100/80 dark:bg-slate-800/80">
-              <Avatar className="size-6">
-                <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80" />
-                <AvatarFallback>MT</AvatarFallback>
-              </Avatar>
-              <span className="flex-1 font-semibold text-slate-900 dark:text-white">Milesto Team</span>
-              <Check className="size-3.5 text-[#EF4671]" />
-            </DropdownMenuItem>
-            <DropdownMenuItem className="flex items-center gap-2.5 rounded-xl px-2 py-2 text-xs font-medium cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800">
-              <div className="flex size-6 items-center justify-center rounded-full bg-purple-600 text-white text-[10px] font-medium">
-                AC
-              </div>
-              <span className="text-slate-700 dark:text-slate-300">Acme Studio</span>
-            </DropdownMenuItem>
+            {workspaces.map((ws) => {
+              const isSelected = ws.id === activeWorkspace.id
+              return (
+                <DropdownMenuItem
+                  key={ws.id}
+                  onClick={() => switchWorkspace(ws.id)}
+                  className={`flex items-center gap-2.5 rounded-xl px-2 py-2 text-xs font-medium cursor-pointer transition-colors ${
+                    isSelected
+                      ? "bg-slate-100/90 dark:bg-slate-800/90 font-semibold"
+                      : "hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
+                >
+                  {ws.avatar ? (
+                    <Avatar className="size-6 shrink-0">
+                      <AvatarImage src={ws.avatar} alt={ws.name} />
+                      <AvatarFallback className={`${ws.color} text-white text-[10px]`}>
+                        {ws.initials}
+                      </AvatarFallback>
+                    </Avatar>
+                  ) : (
+                    <div
+                      className={`flex size-6 shrink-0 items-center justify-center rounded-lg ${ws.color} text-white text-[10px] font-bold`}
+                    >
+                      {ws.initials}
+                    </div>
+                  )}
+                  <span className="flex-1 truncate text-slate-900 dark:text-white">
+                    {ws.name}
+                  </span>
+                  {isSelected && (
+                    <Check className="size-3.5 text-[#EF4671] shrink-0" />
+                  )}
+                </DropdownMenuItem>
+              )
+            })}
             <DropdownMenuSeparator className="my-1 bg-slate-100 dark:bg-slate-800" />
-            <DropdownMenuItem className="flex items-center gap-2 rounded-xl px-2 py-1.5 text-xs font-semibold cursor-pointer text-[#EF4671] hover:bg-[#fceaf0]/50 dark:hover:bg-[#EF4671]/20">
+            <DropdownMenuItem
+              onClick={() => setIsCreateModalOpen(true)}
+              className="flex items-center gap-2 rounded-xl px-2 py-1.5 text-xs font-semibold cursor-pointer text-[#EF4671] hover:bg-[#fceaf0]/50 dark:hover:bg-[#EF4671]/20"
+            >
               <Plus className="size-3.5" />
               <span>Create Workspace</span>
             </DropdownMenuItem>
@@ -174,7 +210,11 @@ export function AppSidebar() {
             <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
               Workspace
             </SidebarGroupLabel>
-            <SidebarGroupAction title="Add workspace" className="text-slate-400 hover:text-[#EF4671]">
+            <SidebarGroupAction
+              title="Add workspace"
+              onClick={() => setIsCreateModalOpen(true)}
+              className="text-slate-400 hover:text-[#EF4671] cursor-pointer"
+            >
               <Plus className="size-3.5" />
             </SidebarGroupAction>
           </div>
@@ -270,6 +310,12 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      {/* Create Workspace Modal */}
+      <CreateWorkspaceModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
     </Sidebar>
   )
 }
