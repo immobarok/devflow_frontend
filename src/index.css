@@ -131,6 +131,12 @@
   html {
     @apply font-sans;
     }
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 0.75rem !important; /* 12px */
+    font-weight: 400 !important; /* normal weight, not bold or medium */
+    opacity: 0.75;
+  }
 }
 
 .no-scrollbar::-webkit-scrollbar {

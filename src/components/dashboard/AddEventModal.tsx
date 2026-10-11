@@ -99,7 +99,7 @@ export function AddEventModal({
               placeholder="e.g. Sprint Retrospective or Client Sync"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:border-[#EF4671] focus:outline-none focus:ring-2 focus:ring-[#EF4671]/20 dark:border-white/10 dark:bg-slate-900/60 dark:text-white transition-all font-medium"
+              className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-[11px] placeholder:font-normal placeholder:text-slate-400 focus:border-[#EF4671] focus:outline-none focus:ring-2 focus:ring-[#EF4671]/20 dark:border-white/10 dark:bg-slate-900/60 dark:text-white transition-all font-medium"
             />
           </div>
 
@@ -128,7 +128,7 @@ export function AddEventModal({
                 placeholder="10:00 - 11:00 AM"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-[#EF4671] focus:outline-none focus:ring-2 focus:ring-[#EF4671]/20 dark:border-white/10 dark:bg-slate-900/60 dark:text-white transition-all font-medium"
+                className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-900 placeholder:text-[11px] placeholder:font-normal placeholder:text-slate-400 focus:border-[#EF4671] focus:outline-none focus:ring-2 focus:ring-[#EF4671]/20 dark:border-white/10 dark:bg-slate-900/60 dark:text-white transition-all font-medium"
               />
             </div>
           </div>
@@ -171,7 +171,7 @@ export function AddEventModal({
               placeholder="Add agenda or relevant links..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-[#EF4671] focus:outline-none focus:ring-2 focus:ring-[#EF4671]/20 dark:border-white/10 dark:bg-slate-900/60 dark:text-white transition-all font-medium resize-none"
+              className="w-full rounded-2xl border border-slate-200 bg-white/80 px-3.5 py-2 text-xs text-slate-900 placeholder:text-[11px] placeholder:font-normal placeholder:text-slate-400 focus:border-[#EF4671] focus:outline-none focus:ring-2 focus:ring-[#EF4671]/20 dark:border-white/10 dark:bg-slate-900/60 dark:text-white transition-all font-medium resize-none"
             />
           </div>
 

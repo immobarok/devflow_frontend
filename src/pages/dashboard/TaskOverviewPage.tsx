@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Search, Plus, CheckCircle2, Clock, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CreateTaskModal, type TaskPayload } from "@/components/dashboard"
+import { useSearchFilter } from "@/lib/searchFilterStore"
 
 interface Task {
   id: string
@@ -89,11 +90,16 @@ export default function TaskOverviewPage() {
     setTasksList([newTask, ...tasksList])
   }
 
+  const { searchQuery } = useSearchFilter()
+  const effectiveSearch = (search || searchQuery).trim().toLowerCase()
+
   const filteredTasks = tasksList.filter((task) => {
     const matchesFilter = filter === "All" || task.status === filter
     const matchesSearch =
-      task.title.toLowerCase().includes(search.toLowerCase()) ||
-      task.id.toLowerCase().includes(search.toLowerCase())
+      !effectiveSearch ||
+      task.title.toLowerCase().includes(effectiveSearch) ||
+      task.id.toLowerCase().includes(effectiveSearch) ||
+      task.category.toLowerCase().includes(effectiveSearch)
     return matchesFilter && matchesSearch
   })
 
@@ -188,7 +194,7 @@ export default function TaskOverviewPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search tasks..."
-            className="h-9 w-full rounded-full border border-white/80 bg-white/70 pl-8 pr-3 text-xs text-slate-900 dark:border-white/10 dark:bg-slate-900/70 dark:text-white focus:outline-none focus:border-[#EF4671]"
+            className="h-9 w-full rounded-full border border-white/80 bg-white/70 pl-8 pr-3 text-xs text-slate-900 dark:border-white/10 dark:bg-slate-900/70 dark:text-white placeholder:text-[11px] placeholder:font-normal placeholder:text-slate-400 focus:outline-none focus:border-[#EF4671]"
           />
         </div>
       </div>

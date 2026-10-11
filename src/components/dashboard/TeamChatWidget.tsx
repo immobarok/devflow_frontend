@@ -112,8 +112,8 @@ export function TeamChatWidget() {
           type="text"
           value={chatInput}
           onChange={(e) => setChatInput(e.target.value)}
-          placeholder="Message Here..."
-          className="flex-1 bg-transparent text-xs text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none"
+          placeholder="Message here..."
+          className="flex-1 bg-transparent text-xs text-slate-900 dark:text-white placeholder:text-[11px] placeholder:font-normal placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none"
         />
         <button
           type="button"

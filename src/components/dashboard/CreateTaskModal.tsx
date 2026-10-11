@@ -158,7 +158,7 @@ export function CreateTaskModal({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Design System Tokens & Glass UI"
-              className="h-10 w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-slate-900/80 px-3.5 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#EF4671] focus:ring-4 focus:ring-[#EF4671]/10 transition-all"
+              className="h-10 w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-slate-900/80 px-3.5 text-xs text-slate-900 dark:text-white placeholder:text-[11px] placeholder:font-normal placeholder:text-slate-400 focus:outline-none focus:border-[#EF4671] focus:ring-4 focus:ring-[#EF4671]/10 transition-all"
             />
           </div>
 
@@ -172,7 +172,7 @@ export function CreateTaskModal({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="What needs to be accomplished in this task?"
-              className="w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-slate-900/80 p-3 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#EF4671] focus:ring-4 focus:ring-[#EF4671]/10 transition-all resize-none"
+              className="w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-slate-900/80 p-3 text-xs text-slate-900 dark:text-white placeholder:text-[11px] placeholder:font-normal placeholder:text-slate-400 focus:outline-none focus:border-[#EF4671] focus:ring-4 focus:ring-[#EF4671]/10 transition-all resize-none"
             />
           </div>
 
