@@ -1,5 +1,5 @@
-import { X, Check, RotateCcw, Filter, User, AlertCircle, ListTodo } from "lucide-react"
-import { useSearchFilter, type FilterCriteria } from "@/lib/searchFilterStore"
+import { X, RotateCcw, Filter, User, AlertCircle, ListTodo } from "lucide-react"
+import { useSearchFilter } from "@/lib/searchFilterStore"
 
 interface FilterPopoverProps {
   isOpen: boolean
